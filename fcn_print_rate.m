@@ -3,10 +3,10 @@ function fcn_print_rate(name, net, eta, const, ev)
 %
 % DESCRIPTION
 %   Prints, for one run, the rate exponent of Theorem 1, the explicit
-%   constants of Lemma 1 (root) and Theorem 1 (fcn_constants), and two
-%   checks over the simulated horizon: every agent satisfies
-%   L_i <= phi_t^i q_t^{alpha_i} <= U_i, and at every t
-%   pi_lo (t+1)^{-beta} <= lambda_min(P_{t-1}) <= lambda_max(P_{t-1}) <= pi_hi (t+1)^{-beta}.
+%   constants of Lemma 1 (root) and Theorem 1, and two checks over the
+%   simulated horizon: L_i <= phi_t^i q_t^{alpha_i} <= U_i for every agent, and
+%   pi_lo (t+1)^{-beta} <= lambda_min(P_{t-1}) <= lambda_max(P_{t-1}) <= pi_hi (t+1)^{-beta}
+%   at every t.
 %
 % INPUT
 %   name    string, name of the tree

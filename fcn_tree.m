@@ -3,23 +3,17 @@ function net = fcn_tree(E, epsilon)
 %
 % DESCRIPTION
 %   Builds the directed tree (V, E) of Sec. 3.1 and its augmented graph
-%   (V_bar, E_bar). The agents are V = {1, ..., r}; an edge (j, i) in E
-%   means that j is a child of i, so every edge points toward the root r,
-%   which has no parent, while every other agent has exactly one. The
-%   fictitious agent 0, the signal s_t(x), is a child of every leaf:
+%   (V_bar, E_bar). An edge (j, i) in E means that j is a child of i, so
+%   every edge points toward the root r. The fictitious agent 0, the signal
+%   s_t(x), is a child of every leaf: E_bar = E u {(0, i): i in L}.
 %
-%     E_bar = E u {(0, i): i in L}.
-%
-%   For each agent i, also computes its children C_bar^i in the augmented
-%   graph (0 for a leaf) and its shortest distance to a leaf
+%   Also computes, for each agent i, its children C_bar^i (0 for a leaf),
+%   its shortest distance to a leaf
 %
 %     delta_i = 0                              if i in L,
 %     delta_i = 1 + min_{j in C_bar^i} delta_j otherwise,
 %
-%   which sets the exponent alpha_i of Lemma 1, and an ordering of V in
-%   which every agent comes after all its children: a round of
-%   word-of-mouth estimation proceeds along it, from the leaves to the root
-%   (Fig. 2).
+%   and an ordering of V in which every agent comes after all its children.
 %
 % INPUT
 %   E         |E| x 2, edges (j, i) of the tree, labels in {1, ..., r}, root r
@@ -58,7 +52,7 @@ if ~(isscalar(epsilon) && epsilon > 0 && isfinite(epsilon))
     error("fcn_tree:invalidNoise", "epsilon must be a finite, strictly positive scalar");
 end
 
-%% CHILDREN AND LEAVES (augmented graph: the signal, agent 0, is the only child of each leaf)
+%% CHILDREN AND LEAVES (agent 0 is the only child of each leaf)
 C = cell(r, 1);
 for i = 1:r
     C{i} = E(E(:, 2) == i, 1);

@@ -2,10 +2,8 @@ function plot_param = fcn_plot_param(n_runs)
 %% fcn_plot_param
 %
 % DESCRIPTION
-%   Builds the plotting style shared by all experiments: one color and one
-%   marker per run (cycled if n_runs exceeds the palette), line width,
-%   fonts and axes options. Run k is always drawn with color(k, :) and
-%   marker(k), so it is recognizable across figures.
+%   Plotting style shared by all figures: one color and one marker per run
+%   (cycled if n_runs exceeds the palette), line width, fonts and axes options.
 %
 % INPUT
 %   n_runs       number of runs to be told apart
@@ -26,8 +24,7 @@ palette = orderedcolors("gem");
 plot_param.color = palette(mod(0:n_runs-1, size(palette, 1)) + 1, :);
 
 %% RUN MARKERS
-markers = ["o"; "s"; "^"; "d"; "v"; ">"; "<"; "p"; "h"];
-plot_param.marker = markers(mod(0:n_runs-1, numel(markers)) + 1);
+plot_param.marker = repmat("o", n_runs, 1);
 plot_param.marker_size = 6;
 
 %% LINES
@@ -35,7 +32,7 @@ plot_param.line_width = 1.5;
 
 %% FONTS
 plot_param.font_size = 10;
-plot_param.interpreter = "latex";   % labels, legend and tick labels
+plot_param.interpreter = "latex";
 
 %% AXES
 plot_param.grid = "on";

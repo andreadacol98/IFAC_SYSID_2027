@@ -2,11 +2,9 @@ function y_lim = fcn_ylim(ev, const)
 %% fcn_ylim
 %
 % DESCRIPTION
-%   Common y-limits for the figures of a set of runs, so that they have
-%   the same size and can be compared: from the lowest value ever reached
-%   by the smallest eigenvalue lambda_min(P_{t-1}) of any run, up to the
-%   highest value of the upper bounds pi_hi (t+1)^{-beta}, attained at
-%   t = 1.
+%   Common y-limits for the figures of a set of runs, as in Fig. 4: from
+%   the lowest value reached by lambda_min(P_{t-1}) in any run up to the
+%   highest upper bound pi_hi (t+1)^{-beta}, attained at t = 1.
 %
 % INPUT
 %   ev      cell array, eigenvalues of the runs (fcn_eig)

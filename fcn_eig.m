@@ -3,10 +3,8 @@ function ev = fcn_eig(traj, const)
 %
 % DESCRIPTION
 %   Extracts from one run the smallest and the largest eigenvalue of the
-%   common error covariance P_{t-1}, t = 1, ..., T+1 (from P_0 to P_T), to
-%   be compared with the bounds of Theorem 1, and the range of
-%   phi_t^i q_t^{alpha_i} over t = 1, ..., T for every agent, to be
-%   compared with the constants [L_i, U_i] of Lemma 1 (fcn_constants).
+%   common error covariance P_{t-1}, t = 1, ..., T+1 (Theorem 1), and the
+%   range of phi_t^i q_t^{alpha_i} over t = 1, ..., T (Lemma 1).
 %
 % INPUT
 %   traj    traj struct, after fcn_run; uses P, q, phi
@@ -23,7 +21,7 @@ function ev = fcn_eig(traj, const)
 n_t = size(traj.P, 3);
 ev.t = 1:n_t;
 if size(traj.P, 1) == 2
-    % closed form for symmetric 2 x 2 matrices, all t at once: (a + d)/2 -+ sqrt(((a - d)/2)^2 + b^2)
+    % closed form for symmetric 2 x 2 matrices: (a + d)/2 -+ sqrt(((a - d)/2)^2 + b^2)
     a = reshape(traj.P(1, 1, :), 1, n_t);
     b = reshape(traj.P(1, 2, :), 1, n_t);
     d = reshape(traj.P(2, 2, :), 1, n_t);
