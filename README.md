@@ -59,12 +59,12 @@ The repository contains the following **MATLAB** files:
 1. Add the repository folder to your **MATLAB** path.
 2. Open and run `main.mlx`.
 
-The default parameters in `fcn_param.m` correspond to Section 6 of the paper: $\mathbf{x}\in\mathbb{R}^2$, prior mean $\hat{\mathbf{x}}_0=\mathbf{0}$ and covariance $\mathbf{P}_0=\operatorname{diag}(2,1)$, regressor
+The default parameters in `fcn_param.m` correspond to Section 6 of the paper: $\mathbf{x}\in\mathbb{R}^2$, prior mean $\hat{\mathbf{x}}_0=\mathbf{0}$ and covariance $\mathbf{P}_0=\mathrm{diag}(2,1)$, regressor
 
-$$
+```math
 \mathbf{c}_t = [\cos(\omega t),\;\rho\sin(\omega t)]^\top,
 \qquad \omega=1,\quad \rho=2,
-$$
+```
 
 unit observation-noise variance on each edge, and horizon $T=10^5$. The random seed is fixed by `rng(0)` for reproducibility of the sampled state and noise sequences; the common covariance trajectory is independent of that seed.
 
