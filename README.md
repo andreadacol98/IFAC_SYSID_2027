@@ -1,4 +1,3 @@
-
 # Do Hierarchical Networks Actually Learn? Insights from Word-of-Mouth Estimation
 
 ## Abstract
