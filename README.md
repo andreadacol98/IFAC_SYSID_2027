@@ -23,6 +23,7 @@ The code was used to produce the numerical examples (Figures 3 and 4) of the fol
 
 ## Installation
 Clone this repository by downloading the zip file. Alternatively, one can use:
+
 ```bash
 git clone https://github.com/andreadacol98/IFAC_SYSID_2027.git
 ```
@@ -53,38 +54,39 @@ Here is a high-level description of the **MATLAB** files in this repository:
 
 ## Usage
 The same numerical examples of [🔗 Do Hierarchical Networks Actually Learn? Insights from Word-of-Mouth Estimation][paper] are considered, in order to show how the code is successfully run:
-- Add the repository to your **MATLAB** path
-- Open and run `main.mlx`
+
+- Add the repository to your **MATLAB** path.
+- Open and run `main.mlx`.
   - The default parameters in `fcn_param.m` are those of Section 6 of the paper: $\mathbf{x} \in \mathbb{R}^2$ with $\mathbf{P}_0 = \mathrm{diag}(2, 1)$, regressor $\mathbf{c}_t = [\cos(\omega t), \rho \sin(\omega t)]^\top$ with $\omega = 1$ and $\rho = 2$, unit noise variance on every edge, and horizon $T = 10^5$. The random seed is fixed by `rng(0)`.
   - Two directed trees are considered. Agent 0 (the signal) and its edges to the leaves are omitted below:
 
   ```text
-     Tree A (delta_r = 1)       Tree B (delta_r = 2)
-        Fig. 3(b)                  Fig. 3(a)
+       delta_r = 2                 delta_r = 1
+        Fig. 3(a)                   Fig. 3(b)
 
-            6                          7
+            7                          6
           /   \                      /   \
-         1     5                    2     6
-               |                    |     |
-               4                    1     5
+         2     6                    1     5
+         |     |                          |
+         1     5                          4
               / \                        / \
-             2   3                      3   4
+             3   4                      2   3
   ```
 
-  - **Experiment 1 (normalization)** runs tree B with $\eta = 0$ and $\eta = 1$, for which $\beta = 1/11$ and $\beta = 1/7$, respectively.
-  - **Experiment 2 (depth)** runs trees B and A with $\eta = 1$, for which $\beta = 1/7$ and $\beta = 1/3$, respectively. The run of tree B is reused from Experiment 1.
+  - **Experiment 1 (normalization)** runs the tree with $\delta_r = 2$ for $\eta = 0$ and $\eta = 1$, yielding $\beta = 1/11$ and $\beta = 1/7$, respectively.
+  - **Experiment 2 (depth)** compares the trees with $\delta_r = 2$ and $\delta_r = 1$ for $\eta = 1$, yielding $\beta = 1/7$ and $\beta = 1/3$, respectively. The run with $\delta_r = 2$ is reused from Experiment 1.
   - Every figure opens in its own window, not embedded in the live script, so that it can be edited with the figure tools. The lower bound of Theorem 1 is printed but not drawn, as it lies many orders of magnitude below the smallest eigenvalue.
 
   | Figure | Content | Paper |
   |---|---|---|
-  | 1 | Tree A | Fig. 3(b) |
-  | 2 | Tree B | Fig. 3(a) |
-  | 3 | Tree B, $\eta = 0$, $\beta = 1/11$ | Fig. 4(a) |
-  | 4 | Tree B, $\eta = 1$, $\beta = 1/7$ | Fig. 4(b) |
-  | 5 | Tree B, $\eta = 1$, $\beta = 1/7$ (same run as Figure 4, on the axes of Experiment 2) | Fig. 4(b) |
-  | 6 | Tree A, $\eta = 1$, $\beta = 1/3$ | Fig. 4(c) |
+  | 1 | $\delta_r = 1$ | Fig. 3(b) |
+  | 2 | $\delta_r = 2$ | Fig. 3(a) |
+  | 3 | $\delta_r = 2$, $\eta = 0$, $\beta = 1/11$ | Fig. 4(a) |
+  | 4 | $\delta_r = 2$, $\eta = 1$, $\beta = 1/7$ | Fig. 4(b) |
+  | 5 | $\delta_r = 2$, $\eta = 1$, $\beta = 1/7$ (same run as Figure 4, on the axes of Experiment 2) | Fig. 4(b) |
+  | 6 | $\delta_r = 1$, $\eta = 1$, $\beta = 1/3$ | Fig. 4(c) |
 
 - The plots should be aligned with those provided in the link above.
 - The rates of Theorem 1 are slow, so the horizon matters: increasing `param.T` in `fcn_param.m` to $10^6$ adds one decade to the plots, at roughly ten times the run time.
 
-[paper]: https://arxiv.org/abs/XXXX.XXXXX
+[paper]: https://arxiv.org/abs/2611.20806
